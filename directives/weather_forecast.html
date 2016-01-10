@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ convertToDate({date: weatherData.dt}) | date: dateFormat }}</h3>
+  </div>
+  <div class="panel-body">
+    Daytime temperature:
+    {{ fahrenheitTemp({ temp: weatherData.temp.day}) }}&deg;F /
+    {{ celciusTemp({ temp: weatherData.temp.day}) }}&deg;C
+  </div>
+</div>
