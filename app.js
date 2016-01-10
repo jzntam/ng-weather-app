@@ -1,4 +1,4 @@
-var weatherApp = angular.module('weatherApp', []);
+var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
 
 weatherApp.config(function($routeProvider) {
   $routeProvider
@@ -12,10 +12,17 @@ weatherApp.config(function($routeProvider) {
   })
 });
 
-weatherApp.controller('homeController', ['$scope', function ($scope) {
+weatherApp.service('weatherService', function(){
+  this.city = "New York, NY"
+})
 
+weatherApp.controller('homeController', ['$scope', 'weatherService', function ($scope, weatherService) {
+  $scope.city = weatherService.city;
+  $scope.$watch('city', function(){
+    weatherService.city = $scope.city;
+  });
 }]);
 
-weatherApp.controller('forecastController', ['$scope', function ($scope) {
-
+weatherApp.controller('forecastController', ['$scope', 'weatherService', function ($scope, weatherService) {
+  $scope.city = weatherService.city;
 }]);
