@@ -44,5 +44,17 @@ weatherApp.controller('forecastController', ['$scope', '$resource', 'weatherServ
     }
   );
 
-  console.log($scope);
+  $scope.convertToFahrenheit = function(degK) {
+    return Math.round((1.8 * (degK - 273.15)) + 32);
+  }
+
+  $scope.convertToCelcius = function(degK) {
+    return Math.round(degK - 273.15);
+  }
+
+  $scope.convertToDate = function(dt) {
+    return new Date(dt * 1000);
+  };
+
+
 }]);
