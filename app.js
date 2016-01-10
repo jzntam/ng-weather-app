@@ -23,6 +23,26 @@ weatherApp.controller('homeController', ['$scope', 'weatherService', function ($
   });
 }]);
 
-weatherApp.controller('forecastController', ['$scope', 'weatherService', function ($scope, weatherService) {
+weatherApp.controller('forecastController', ['$scope', '$resource', 'weatherService', function ($scope, $resource, weatherService) {
   $scope.city = weatherService.city;
+
+  $scope.weatherAPI = $resource(
+    "http://api.openweathermap.org/data/2.5/forecast/daily",
+    {
+      callback: "JSON_CALLBACK"
+    },
+    {
+      get: { method: "JSONP" }
+    }
+  );
+
+  $scope.weatherResult = $scope.weatherAPI.get(
+    {
+      q:     $scope.city,
+      cnt:   2,
+      appid: '92dee419b1737be748405422b0f195dd'
+    }
+  );
+
+  console.log($scope);
 }]);
