@@ -1,8 +1,12 @@
-weatherApp.controller('homeController', ['$scope', 'weatherService', function ($scope, weatherService) {
+weatherApp.controller('homeController', ['$scope', '$location', 'weatherService', function ($scope, $location, weatherService) {
   $scope.city = weatherService.city;
   $scope.$watch('city', function(){
     weatherService.city = $scope.city;
   });
+
+  $scope.submit = function(){
+    $location.path('/forecast');
+  };
 }]);
 
 weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParams', 'weatherService', function ($scope, $resource, $routeParams, weatherService) {
