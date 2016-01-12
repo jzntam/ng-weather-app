@@ -10,7 +10,8 @@
 <div ng-repeat="w in weatherResult.list">
   <div class="row">
     <div class="col-md-12">
-      <weather-forecast weather-data="w"
+      <weather-forecast
+        weather-data="w"
         fahrenheit-temp="convertToFahrenheit(temp)"
         celcius-temp="convertToCelcius(temp)"
         convert-to-date="convertToDate(date)"

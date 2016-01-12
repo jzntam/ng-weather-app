@@ -6,5 +6,9 @@
     Daytime temperature:
     {{ fahrenheitTemp({ temp: weatherData.temp.day}) }}&deg;F /
     {{ celciusTemp({ temp: weatherData.temp.day}) }}&deg;C
+    <br>
+    Forecast: {{ weatherData.weather[0]['main'] }}
   </div>
+
+  <span>{{ weatherData }}</span>
 </div>
