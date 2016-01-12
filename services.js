@@ -1,5 +1,5 @@
 weatherApp.service('weatherService', function(){
-  this.city = "New York, NY"
+  this.city = "Vancouver, BC"
 })
 
 weatherApp.service('weatherApiService', ['$resource', function($resource){
